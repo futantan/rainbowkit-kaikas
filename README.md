@@ -2,7 +2,7 @@ This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Ne
 
 Here are some attempts to integrate wagmi with RainbowKit, testing with safari on iPhone
 
-## First try with kaikas provided from RainbowKit
+## [First try with kaikas provided from RainbowKit](https://github.com/futantan/rainbowkit-kaikas/commit/fd6de20e89a9f7057b557be6de5b456b545236d1)
 
 ```ts
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets'
@@ -12,7 +12,7 @@ import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets'
 
 Click Kaikas wallet icon on the website, it will open kaikas, but nothing happened, it will not ask the user to connect the wallet.
 
-## Second try, customize kaikas wallet
+## [Second try, customize kaikas wallet](https://github.com/futantan/rainbowkit-kaikas/commit/f3f43f3a3c0678589254def2aab4ed3a6d99a5cf)
 
 The url schema doesn't work, so I have changed
 
