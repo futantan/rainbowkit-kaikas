@@ -1,6 +1,6 @@
 This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project bootstrapped with [`create-rainbowkit`](/packages/create-rainbowkit).
 
-Here are some attempts to integrate wagmi with RainbowKit, testing with safari on iPhone
+Here are some attempts to integrate kaikas wallet with RainbowKit, testing with safari on iPhone
 
 ## [First try with kaikas provided from RainbowKit](https://github.com/futantan/rainbowkit-kaikas/commit/fd6de20e89a9f7057b557be6de5b456b545236d1)
 
