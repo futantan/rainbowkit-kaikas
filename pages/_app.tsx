@@ -1,18 +1,20 @@
-import '../styles/globals.css';
-import '@rainbow-me/rainbowkit/styles.css';
-import type { AppProps } from 'next/app';
+import '@rainbow-me/rainbowkit/styles.css'
+import type { AppProps } from 'next/app'
+import '../styles/globals.css'
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider } from 'wagmi';
+import { RainbowKitProvider, getDefaultConfig } from '@rainbow-me/rainbowkit'
+import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { WagmiProvider } from 'wagmi'
 import {
   arbitrum,
   base,
+  klaytn,
   mainnet,
   optimism,
   polygon,
   sepolia,
-} from 'wagmi/chains';
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+} from 'wagmi/chains'
 
 const config = getDefaultConfig({
   appName: 'RainbowKit App',
@@ -23,12 +25,19 @@ const config = getDefaultConfig({
     optimism,
     arbitrum,
     base,
+    klaytn,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
+  wallets: [
+    {
+      groupName: 'Popular',
+      wallets: [kaikasWallet],
+    },
+  ],
   ssr: true,
-});
+})
 
-const client = new QueryClient();
+const client = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -39,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
