@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 
 import { RainbowKitProvider, getDefaultConfig } from '@rainbow-me/rainbowkit'
-import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
 import {
@@ -15,6 +14,7 @@ import {
   polygon,
   sepolia,
 } from 'wagmi/chains'
+import { customKaikasWallet } from '../lib/customKaikasWallet'
 
 const config = getDefaultConfig({
   appName: 'RainbowKit App',
@@ -31,7 +31,8 @@ const config = getDefaultConfig({
   wallets: [
     {
       groupName: 'Popular',
-      wallets: [kaikasWallet],
+
+      wallets: [customKaikasWallet],
     },
   ],
   ssr: true,

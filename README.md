@@ -1,29 +1,33 @@
 This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project bootstrapped with [`create-rainbowkit`](/packages/create-rainbowkit).
 
-## Getting Started
+Here are some attempts to integrate wagmi with RainbowKit, testing with safari on iPhone
 
-First, run the development server:
+## First try with kaikas provided from RainbowKit
 
-```bash
-npm run dev
+```ts
+import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[source code](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/kaikasWallet/kaikasWallet.ts)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Click Kaikas wallet icon on the website, it will open kaikas, but nothing happened, it will not ask the user to connect the wallet.
 
-## Learn More
+## Second try, customize kaikas wallet
 
-To learn more about this stack, take a look at the following resources:
+The url schema doesn't work, so I have changed
 
-- [RainbowKit Documentation](https://rainbowkit.com) - Learn how to customize your wallet connection flow.
-- [wagmi Documentation](https://wagmi.sh) - Learn how to interact with Ethereum.
-- [Next.js Documentation](https://nextjs.org/docs) - Learn how to build a Next.js application.
+```ts
+kaikas://walletconnect?uri=${encodeURIComponent(uri)}
+```
 
-You can check out [the RainbowKit GitHub repository](https://github.com/rainbow-me/rainbowkit) - your feedback and contributions are welcome!
+to:
 
-## Deploy on Vercel
+```ts
+kaikas://wallet/browser?url=${encodeURI(window.location.origin)}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Now, it will open the website inside Kaikas wallet, but when user click the wallet icon, nothing happened.
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+One possible reason is that the Kaikas wallet inside iPhone doesn't implement https://eips.ethereum.org/EIPS/eip-1193
+
+Rainbowkit is the most popular web3 wallet for mobile, but it will be great if we can integrate kaikas with RainbowKit. A PR to RainbowKit to update the `kaikasWallet.ts` will be great
